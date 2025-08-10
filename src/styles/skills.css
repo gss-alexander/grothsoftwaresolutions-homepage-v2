@@ -1,0 +1,295 @@
+/* Skills Page Specific Styles */
+
+/* Page Header */
+.page-header {
+    padding: 80px 0 60px;
+    background: #f8f8f8;
+    border-bottom: 1px solid #d0d0d0;
+}
+
+.page-header-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.page-header h1 {
+    font-size: 48px;
+    color: #1a1a1a;
+    margin-bottom: 20px;
+    font-weight: 400;
+    font-style: italic;
+    letter-spacing: -0.5px;
+}
+
+.page-header .subtitle {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    color: #6d6d6d;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+/* Main Content */
+.main-content {
+    padding: 80px 0 100px;
+    background: #ffffff;
+}
+
+.content-wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Skills Intro */
+.skills-intro {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 80px;
+    padding: 40px;
+    background: #f0f0f0;
+    border-left: 8px solid #2d2d2d;
+}
+
+.skills-intro p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #3d3d3d;
+}
+
+/* Skills Category */
+.skills-category {
+    margin-bottom: 80px;
+}
+
+.category-header {
+    text-align: center;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+.category-header::before {
+    content: '';
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 3px;
+    background: #2d2d2d;
+}
+
+.category-header h2 {
+    font-size: 32px;
+    color: #1a1a1a;
+    font-weight: 400;
+    font-style: italic;
+    letter-spacing: -0.5px;
+}
+
+/* Skills Grid */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.skill-item {
+    padding: 30px;
+    background: #f8f8f8;
+    border: 1px solid #d0d0d0;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.skill-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: #2d2d2d;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+    transform-origin: left;
+}
+
+.skill-item:hover::before {
+    transform: scaleX(1);
+}
+
+.skill-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.skill-item h3 {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    font-size: 18px;
+    color: #1a1a1a;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+}
+
+.skill-item p {
+    font-size: 15px;
+    color: #4d4d4d;
+    line-height: 1.6;
+}
+
+/* Approach Section */
+.approach-section {
+    margin-top: 100px;
+    padding: 60px;
+    background: #2d2d2d;
+    color: #ffffff;
+    position: relative;
+}
+
+.approach-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: #ffffff;
+}
+
+.approach-section h2 {
+    font-size: 36px;
+    margin-bottom: 40px;
+    font-weight: 400;
+    font-style: italic;
+    text-align: center;
+    letter-spacing: -0.5px;
+}
+
+.approach-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 40px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.approach-item {
+    text-align: center;
+}
+
+.approach-item h3 {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+}
+
+.approach-item p {
+    font-size: 15px;
+    opacity: 0.9;
+    line-height: 1.6;
+}
+
+/* CTA Section */
+.cta-section {
+    background: #ebebeb;
+    padding: 80px 0;
+    text-align: center;
+}
+
+.cta-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.cta-section h2 {
+    font-size: 32px;
+    color: #1a1a1a;
+    margin-bottom: 24px;
+    font-weight: 400;
+    font-style: italic;
+    letter-spacing: -0.5px;
+}
+
+.cta-section p {
+    font-size: 18px;
+    color: #4d4d4d;
+    margin-bottom: 40px;
+    line-height: 1.7;
+}
+
+.cta-button {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    display: inline-block;
+    background: #2d2d2d;
+    color: #ffffff;
+    padding: 18px 40px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 3px solid #2d2d2d;
+    transition: all 0.2s;
+}
+
+.cta-button:hover {
+    background: transparent;
+    color: #2d2d2d;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .page-header {
+        padding: 60px 0 40px;
+    }
+
+    .page-header h1 {
+        font-size: 36px;
+    }
+
+    .main-content {
+        padding: 60px 0 80px;
+    }
+
+    .skills-intro {
+        padding: 30px 20px;
+        margin-bottom: 60px;
+    }
+
+    .skills-category {
+        margin-bottom: 60px;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .skill-item {
+        padding: 25px 20px;
+    }
+
+    .approach-section {
+        padding: 40px 20px;
+    }
+
+    .approach-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .category-header h2 {
+        font-size: 28px;
+    }
+
+    .approach-section h2 {
+        font-size: 28px;
+    }
+}
