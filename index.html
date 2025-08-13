@@ -1,157 +1,216 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="no">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Groth Software Solutions</title>
-  <link rel="stylesheet" href="src/styles/globals.css">
-  <link rel="stylesheet" href="src/styles/home.css">
-  <meta name="description" content="Lei av forsinkelser og budsjettsprekk i IT-prosjekter? Fast pris, transparente prosesser og garanti på alle leveranser. Programvareutvikling for norske bedrifter som verdsetter pålitelighet.">
-</head>
-<body>
-<header>
-  <div class="container">
-    <div class="header-content">
-      <a href="index.html" class="logo">Groth Software Solutions</a>
-      <nav>
-        <ul>
-          <li><a href="#work">Arbeid</a></li>
-          <li><a href="#process">Prosess</a></li>
-          <li><a href="#about">Om meg</a></li>
-          <li><a href="#contact">Kontakt</a></li>
-        </ul>
-      </nav>
-    </div>
-  </div>
-</header>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Groth Software Solutions</title>
+        <link rel="stylesheet" href="src/styles/globals.css" />
+        <link rel="stylesheet" href="src/styles/home.css" />
+        <meta
+            name="description"
+            content="Lei av forsinkelser og budsjettsprekk i IT-prosjekter? Fast pris, transparente prosesser og garanti på alle leveranser. Programvareutvikling for norske bedrifter som verdsetter pålitelighet."
+        />
+    </head>
+    <body>
+        {{> header }}
 
-<section class="hero">
-  <div class="container">
-    <div class="hero-content">
-      <h1>Programvareutvikling<br>uten bullshit</h1>
-      <p class="subtitle">Fast pris. Realistiske tidsfrister. 1 års garanti.</p>
-      <p>Jeg lager pålitelig programvare for bedrifter som er lei av byråkrati og tullete prosesser. Ingen buzzwords, ingen skjulte kostnader, ingen evigvarende møter. Bare kvalitetskode levert til tiden med garanti.</p>
-    </div>
-  </div>
-</section>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Programvareutvikling<br />uten bullshit</h1>
+                    <p class="subtitle">
+                        Fast pris. Realistiske tidsfrister. 1 års garanti.
+                    </p>
+                    <p>
+                        Jeg lager pålitelig programvare for bedrifter som er lei
+                        av byråkrati og kronglete prosesser. Ingen buzzwords,
+                        ingen skjulte kostnader, ingen evigvarende møter, kun
+                        Kvalitetskode levert til tiden med garanti.
+                    </p>
+                </div>
+            </div>
+        </section>
 
-<section class="features section">
-  <div class="container">
-    <div class="section-header">
-      <h2>Hvordan jeg jobber annerledes</h2>
-      <p>Tre prinsipper som gjør hele forskjellen</p>
-    </div>
-    <div class="features-list">
-      <div class="feature">
-        <h3>Fast pris</h3>
-        <p>Du vet nøyaktig hva du skal betale på forhånd. Ingen timeprising, ingen regningsoverraskelser.</p>
-      </div>
-      <div class="feature">
-        <h3>Direkte kommunikasjon</h3>
-        <p>Du jobber direkte med meg, ikke gjennom kundeansvarlige. Oppdateringer etter din tidsplan—daglig hvis du vil, månedlig hvis du ikke trenger det.</p>
-      </div>
-      <div class="feature">
-        <h3>1 års garanti</h3>
-        <p>Jeg står bak arbeidet mitt. Alle bugs eller funksjonalitetsproblemer dekkes i ett helt år etter levering.</p>
-      </div>
-    </div>
-  </div>
-</section>
+        <section class="features section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Hvordan jeg jobber annerledes</h2>
+                    <p>Tre prinsipper som gjør hele forskjellen</p>
+                </div>
+                <div class="features-list">
+                    <div class="feature">
+                        <h3>Fast pris</h3>
+                        <p>
+                            Du vet nøyaktig hva du skal betale på forhånd. Ingen
+                            timeprising, ingen regningsoverraskelser.
+                        </p>
+                    </div>
+                    <div class="feature">
+                        <h3>Direkte kommunikasjon</h3>
+                        <p>
+                            Du jobber direkte med meg, ikke gjennom
+                            kundeansvarlige. Oppdateringer etter din
+                            tidsplan—daglig hvis du vil, månedlig hvis det ikke
+                            trengs.
+                        </p>
+                    </div>
+                    <div class="feature">
+                        <h3>1 års garanti</h3>
+                        <p>
+                            Jeg står bak arbeidet mitt. Alle feil eller
+                            funksjonalitetsproblemer dekkes i ett helt år etter
+                            levering.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-<section class="process section" id="process">
-  <div class="container">
-    <div class="section-header">
-      <h2>Enkel prosess</h2>
-      <p>Ingen bedriftsbyråkrati, bare rett frem prosjektlevering</p>
-    </div>
-    <div class="process-list">
-      <div class="process-step">
-        <div class="step-header">
-          <div class="step-number">1</div>
-          <h3>Gratis kartleggingssamtale</h3>
-        </div>
-        <div class="step-description">
-          1-times konsultasjon for å forstå prosjektet ditt, arbeidsflyt, mål og forventninger. Du får et grovt kostnadsestimat og tidsplan som hjelper deg å bestemme om vi passer sammen.
-        </div>
-      </div>
-      <div class="process-step">
-        <div class="step-header">
-          <div class="step-number">2</div>
-          <h3>Endelig tilbud</h3>
-        </div>
-        <div class="step-description">
-          Innen 5 dager får du et komplett fast tilbud med klare rammer og realistisk tidsplan. Prisen jeg oppgir er din endelige pris—ingen skjulte kostnader eller overraskelser.
-        </div>
-      </div>
-      <div class="process-step">
-        <div class="step-header">
-          <div class="step-number">3</div>
-          <h3>Bygg og lever</h3>
-        </div>
-        <div class="step-description">
-          Utvikling med din foretrukne kommunikasjonsfrekvens. Kvalitetstesting, kundeaksept, og din 1-års garantiperiode starter umiddelbart ved levering.
-        </div>
-      </div>
-    </div>
-    <div class="process-footer">
-      <a href="process.html" class="process-link">Se detaljert prosess</a>
-      <span class="separator">|</span>
-      <a href="skills.html" class="process-link">Tekniske ferdigheter</a>
-    </div>
-  </div>
-</section>
+        <section class="process section" id="process">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Enkel prosess</h2>
+                    <p>
+                        Ingen bedriftsbyråkrati, bare rett frem prosjektlevering
+                    </p>
+                </div>
+                <div class="process-list">
+                    <div class="process-step">
+                        <div class="step-header">
+                            <div class="step-number">1</div>
+                            <h3>Gratis kartleggingssamtale</h3>
+                        </div>
+                        <div class="step-description">
+                            1-times konsultasjon for å forstå prosjektet ditt,
+                            arbeidsflyt, mål og forventninger. Du får et grovt
+                            kostnadsestimat og tidsplan som hjelper deg å
+                            bestemme om vi passer sammen.
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-header">
+                            <div class="step-number">2</div>
+                            <h3>Endelig tilbud</h3>
+                        </div>
+                        <div class="step-description">
+                            Innen 5 dager får du et komplett fast tilbud med
+                            klare rammer og realistisk tidsplan. Prisen jeg
+                            oppgir er din endelige pris—ingen skjulte kostnader
+                            eller overraskelser.
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-header">
+                            <div class="step-number">3</div>
+                            <h3>Bygg og lever</h3>
+                        </div>
+                        <div class="step-description">
+                            Utvikling med din foretrukne kommunikasjonsfrekvens.
+                            Kvalitetstesting, kundeaksept, og din 1-års
+                            garantiperiode starter umiddelbart ved levering.
+                        </div>
+                    </div>
+                </div>
+                <div class="process-footer">
+                    <a href="process.html" class="process-link"
+                        >Detaljert prosess</a
+                    >
+                    <span class="separator">|</span>
+                    <a href="skills.html" class="process-link"
+                        >Tekniske ferdigheter</a
+                    >
+                </div>
+            </div>
+        </section>
 
-<section class="projects section" id="work">
-  <div class="container">
-    <div class="section-header">
-      <h2>Nylig arbeid</h2>
-    </div>
-    <div class="projects-list">
-      <div class="project">
-        <div class="industry">Helsevesen</div>
-        <h3>Prediktivt triagesystem</h3>
-        <p>Triagesystem som hjelper hjemmetjenesten med å prioritere pasientbehandling basert på risikofaktorer.</p>
-      </div>
-      <div class="project">
-        <div class="industry">Detaljhandel</div>
-        <h3>POS-systemforbedring</h3>
-        <p>Ledet tekniske forbedringer for kassasystem som betjener butikker, med fokus på ytelse og pålitelighet.</p>
-      </div>
-      <div class="project">
-        <div class="industry">Underholdning</div>
-        <h3>Indie-spillutvikling</h3>
-        <p>Full-stack utvikling for uavhengig spillstudio, håndterte alt fra spillmekanikk til backend-infrastruktur.</p>
-      </div>
-    </div>
-  </div>
-</section>
+        <section class="projects section" id="work">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Nylig arbeid</h2>
+                </div>
+                <div class="projects-list">
+                    <div class="project">
+                        <div class="industry">Helsevesen</div>
+                        <h3>Prediktivt triagesystem</h3>
+                        <p>
+                            Triagesystem som hjelper hjemmetjenesten med å
+                            prioritere pasientbehandling basert på
+                            risikofaktorer.
+                        </p>
+                    </div>
+                    <div class="project">
+                        <div class="industry">Detaljhandel</div>
+                        <h3>POS-systemforbedring</h3>
+                        <p>
+                            Ledet tekniske forbedringer for kassasystem som
+                            betjener butikker, med fokus på ytelse og
+                            pålitelighet.
+                        </p>
+                    </div>
+                    <div class="project">
+                        <div class="industry">Underholdning</div>
+                        <h3>Indie-spillutvikling</h3>
+                        <p>
+                            Full-stack utvikling for uavhengig spillstudio,
+                            håndterte alt fra spillmekanikk til
+                            backend-infrastruktur.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-<section class="about section" id="about">
-  <div class="container">
-    <div class="about-content">
-      <h2>Hvorfor jeg startet dette</h2>
-      <p>Jeg har allerede sett nok bortkastet tid og energi til å vare livet ut. Endeløse møter som ikke oppnår noe. Faguttrykk som skjuler mangel på reell fremgang. "Ringer tilbake" i stedet for bare å få ting gjort.</p>
-      <p>Jeg bygger den type programvarekonsulent jeg skulle ønske eksisterte—en som behandler kunder som mennesker, leverer det som loves, og står bak arbeidet. Ingen kundeansvarlige, ingen lokkepriser, ingen bedriftsbullshit.</p>
-      <p>Jeg jobber på tvers av bransjer fordi jeg elsker å løse problemer mer enn å bli ekspert på ett felt. Helsevesen, spill, detaljhandel, utdanning—gode programvareprinsipper gjelder overalt.</p>
-    </div>
-  </div>
-</section>
+        <section class="about section" id="about">
+            <div class="container">
+                <div class="about-content">
+                    <h2>Hvorfor jeg startet dette</h2>
 
-<section class="contact section" id="contact">
-  <div class="container">
-    <div class="contact-content">
-      <h2>Klar for å slippe kaoset?</h2>
-      <p>La oss snakke om prosjektet ditt. Ingen salgssnakk, ingen press—bare en ærlig samtale om hva du trenger og om jeg kan levere det.</p>
-      <a href="mailto:alexander@grothsoftwaresolutions.no" class="contact-button">Bestill kartleggingssamtale</a>
-    </div>
-  </div>
-</section>
+                    <p>
+                        Jeg bygger den type programvarekonsulent jeg skulle
+                        ønske eksisterte. En som behandler kunder med respekt,
+                        leverer det som loves, og står ansvarlig for arbeidet
+                        gjort. Ingen kundeansvarlige og ingen lokkepriser.
+                    </p>
+                    <p>
+                        Jeg jobber på tvers av bransjer fordi jeg elsker å løse
+                        problemer mer enn å bli ekspert på ett felt. Helsevesen,
+                        spill, detaljhandel, utdanning—gode
+                        programvareprinsipper gjelder overalt.
+                    </p>
+                </div>
+            </div>
+        </section>
 
-<footer>
-  <div class="container">
-    <p>&copy; 2025 Groth Software Solutions. Bygget uten bedriftsbullshit.
-      <a href="https://github.com/gss-alexander/grothsoftwaresolutions-homepage-v2" class="source-link">Kildekode</a></p>
-  </div>
-</footer>
-</body>
+        <section class="contact section" id="contact">
+            <div class="container">
+                <div class="contact-content">
+                    <h2>Klar for å slippe kaoset?</h2>
+                    <p>
+                        La oss snakke om prosjektet ditt. Ingen salgssnakk,
+                        ingen press—bare en ærlig samtale om hva du trenger og
+                        om jeg kan levere det.
+                    </p>
+                    <a
+                        href="mailto:alexander@grothsoftwaresolutions.no"
+                        class="contact-button"
+                        >Bestill kartleggingssamtale</a
+                    >
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="container">
+                <p>
+                    &copy; 2025 Groth Software Solutions. Bygget uten
+                    bedriftsbullshit.
+                    <a
+                        href="https://github.com/gss-alexander/grothsoftwaresolutions-homepage-v2"
+                        class="source-link"
+                        >Kildekode</a
+                    >
+                </p>
+            </div>
+        </footer>
+    </body>
 </html>
