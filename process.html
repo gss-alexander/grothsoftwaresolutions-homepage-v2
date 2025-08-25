@@ -1,367 +1,309 @@
 <!doctype html>
-<html lang="no">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Detaljert prosess - Groth Software Solutions</title>
-        <link rel="stylesheet" href="src/styles/globals.css" />
-        <link rel="stylesheet" href="src/styles/process.css" />
-    </head>
-    <body>
-        {{> header }}
+<html lang="{{locale}}">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{meta_title_process}}</title>
+    <link rel="stylesheet" href="src/styles/globals.css" />
+    <link rel="stylesheet" href="src/styles/process.css" />
+</head>
+<body>
+{{> header }}
 
-        <section class="page-header">
-            <div class="container">
-                <div class="page-header-content">
-                    <h1>Detaljert prosess</h1>
-                    <p class="subtitle">
-                        Hvordan vi jobber sammen fra første samtale til levering
-                    </p>
-                </div>
-            </div>
-        </section>
+<section class="page-header">
+    <div class="container">
+        <div class="page-header-content">
+            <h1>{{process_page_title}}</h1>
+            <p class="subtitle">
+                {{process_page_subtitle}}
+            </p>
+        </div>
+    </div>
+</section>
 
-        <section class="main-content">
-            <div class="container">
-                <div class="content-wrapper">
-                    <div class="process-step">
-                        <div class="step-header">
-                            <div class="step-number">1</div>
-                            <div class="step-title">
-                                <h2>Gratis kartleggingssamtale</h2>
-                                <div class="step-duration">1 time</div>
-                            </div>
-                        </div>
-                        <div class="step-content">
-                            <p>
-                                Konsultasjon uten forpliktelser for å forstå
-                                prosjektet ditt, arbeidsflyt, mål og
-                                forventninger. Innen slutten av denne samtalen
-                                får du et grovt kostnadsestimat og tidsplan som
-                                hjelper deg å bestemme om vi passer sammen.
-                            </p>
-
-                            <div class="step-details">
-                                <h3>Hva vi går gjennom:</h3>
-                                <ul>
-                                    <li>
-                                        Din nåværende arbeidsflyt og
-                                        utfordringer
-                                    </li>
-                                    <li>Prosjektmål og suksessmålinger</li>
-                                    <li>Tekniske krav og begrensninger</li>
-                                    <li>
-                                        Tidsplanforventninger og prioriteringer
-                                    </li>
-                                    <li>Kommunikasjonspreferanser</li>
-                                    <li>Budsjettramme og betalingsstruktur</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="process-step">
-                        <div class="step-header">
-                            <div class="step-number">2</div>
-                            <div class="step-title">
-                                <h2>Detaljert research og endelig tilbud</h2>
-                                <div class="step-duration">3-5 dager</div>
-                            </div>
-                        </div>
-                        <div class="step-content">
-                            <p>
-                                Hvis du vil gå videre, gjennomfører jeg grundig
-                                research av prosjektkravene dine og leverer et
-                                komplett, endelig tilbud innen en uke.
-                            </p>
-
-                            <div class="step-details">
-                                <h3>Tilbudet ditt inkluderer:</h3>
-                                <ul>
-                                    <li>
-                                        Fast prosjektkostnad (ingen timeprising,
-                                        ingen skjulte kostnader)
-                                    </li>
-                                    <li>
-                                        Realistisk tidsplan med viktige
-                                        milepæler
-                                    </li>
-                                    <li>
-                                        Klar avgrensning som beskriver nøyaktig
-                                        hva som er inkludert
-                                    </li>
-                                    <li>Teknisk arkitektur og tilnærming</li>
-                                    <li>Betalingsplan med 50% depositum</li>
-                                    <li>Garantivilkår og betingelser</li>
-                                </ul>
-                            </div>
-
-                            <p>
-                                <strong
-                                    >Prisen jeg oppgir er din endelige
-                                    pris.</strong
-                                >
-                                Du vet nøyaktig hva du skal betale på forhånd.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="process-step">
-                        <div class="step-header">
-                            <div class="step-number">3</div>
-                            <div class="step-title">
-                                <h2>Prosjektoppstart</h2>
-                                <div class="step-duration">Samme dag</div>
-                            </div>
-                        </div>
-                        <div class="step-content">
-                            <p>
-                                Ved aksept formaliserer vi omfanget i en
-                                detaljert avtale og starter med 50% depositum.
-                                Betalingsmilepæler er innebygd i større
-                                prosjekter for å opprettholde sunn kontantstrøm.
-                            </p>
-
-                            <div class="step-details">
-                                <h3>Oppstartsleveranser:</h3>
-                                <ul>
-                                    <li>
-                                        Signert prosjektavtale med klare
-                                        avgrensninger
-                                    </li>
-                                    <li>Bekreftelse av betalingsplan</li>
-                                    <li>Oppsett av kommunikasjonsfrekvens</li>
-                                    <li>Prosjektmilepæl-kalender</li>
-                                    <li>
-                                        Tilgang til nødvendige systemer og
-                                        ressurser
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="process-step">
-                        <div class="step-header">
-                            <div class="step-number">4</div>
-                            <div class="step-title">
-                                <h2>Utvikling og kommunikasjon</h2>
-                                <div class="step-duration">
-                                    Prosjekttidsplan
-                                </div>
-                            </div>
-                        </div>
-                        <div class="step-content">
-                            <p>
-                                Kommunikasjonsstilen tilpasses dine preferanser.
-                                Jeg jobber i henhold til avtalte spesifikasjoner
-                                mens jeg holder deg informert på ditt foretrukne
-                                detaljnivå.
-                            </p>
-
-                            <div class="step-details">
-                                <h3>Kommunikasjonsalternativer:</h3>
-                                <ul>
-                                    <li>
-                                        <strong>Høy involvering:</strong> Korte
-                                        daglige/ukentlige
-                                        fremdriftsoppdateringer
-                                    </li>
-                                    <li>
-                                        <strong>Minimal involvering:</strong>
-                                        Månedlige samtaler med milepælsammendrag
-                                    </li>
-                                    <li>
-                                        <strong>Teknisk fokus:</strong>
-                                        Kodefremdrift og implementeringsdetaljer
-                                    </li>
-                                    <li>
-                                        <strong>Forretningsfokus:</strong>
-                                        Funksjonsferdigstillelse og brukerrettet
-                                        fremdrift
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <p>
-                                Alle omfangsendringer dokumenteres og krever
-                                separate tilbud før arbeidet fortsetter. Dette
-                                beskytter begge oss mot misforståelser.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="process-step">
-                        <div class="step-header">
-                            <div class="step-number">5</div>
-                            <div class="step-title">
-                                <h2>Levering og garanti</h2>
-                                <div class="step-duration">Siste milepæl</div>
-                            </div>
-                        </div>
-                        <div class="step-content">
-                            <p>
-                                Full funksjonalitetstesting, kundeaksept,
-                                sluttbetaling, og din 1-års garantiperiode
-                                starter umiddelbart.
-                            </p>
-
-                            <div class="step-details">
-                                <h3>Leveringspakke:</h3>
-                                <ul>
-                                    <li>Komplett, testet programvareløsning</li>
-                                    <li>Dokumentasjon og brukerveiledninger</li>
-                                    <li>
-                                        Kildekode og installasjonsinstruksjoner
-                                    </li>
-                                    <li>1-års garantidokumentasjon</li>
-                                    <li>Valgfri driftshåndtering</li>
-                                </ul>
-                            </div>
-
-                            <p>
-                                <strong>1-års garanti</strong> dekker alle bugs
-                                eller funksjonalitetsproblemer som definert i
-                                våre opprinnelige spesifikasjoner. Dette viser
-                                tillit til arbeidskvaliteten min og sikrer at du
-                                er beskyttet.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="process-step">
-                        <div class="step-header">
-                            <div class="step-number">6</div>
-                            <div class="step-title">
-                                <h2>Endringer etter lansering</h2>
-                                <div class="step-duration">Løpende</div>
-                            </div>
-                        </div>
-                        <div class="step-content">
-                            <p>
-                                Alle modifikasjoner eller tillegg etter levering
-                                håndteres på samme måte - fast prising med klart
-                                omfang, så du vet alltid kostnaden på forhånd.
-                            </p>
-
-                            <div class="step-details">
-                                <h3>Omfangsbeskyttelse:</h3>
-                                <ul>
-                                    <li>
-                                        <strong>Endringsordrer:</strong>
-                                        Legitime omfangsutvidelser håndteres
-                                        transparent med nye faste tilbud
-                                    </li>
-                                    <li>
-                                        <strong>Omfangsgrenser:</strong> Klar
-                                        definisjon av opprinnelig omfang vs.
-                                        tilleggsarbeid
-                                    </li>
-                                    <li>
-                                        <strong>Garantibegrensninger:</strong>
-                                        Dekker funksjonalitetsdefekter, ikke
-                                        funksjonsforespørsler
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="process-step">
-                        <div class="step-header">
-                            <div class="step-number">7</div>
-                            <div class="step-title">
-                                <h2>Valgfri løpende drift</h2>
-                                <div class="step-duration">Månedlig</div>
-                            </div>
-                        </div>
-                        <div class="step-content">
-                            <p>
-                                Velg å håndtere hosting og vedlikehold selv,
-                                eller la meg administrere det med en transparent
-                                månedlig driftsavgift.
-                            </p>
-
-                            <div class="step-details">
-                                <h3>Driftsdekning:</h3>
-                                <ul>
-                                    <li>Hostingkostnader og verktøylisenser</li>
-                                    <li>
-                                        Løsning av driftsproblemer
-                                        (lagringsgrenser, servervedlikehold,
-                                        etc.)
-                                    </li>
-                                    <li>Sikkerhetsoppdateringer og patches</li>
-                                    <li>Ytelsesovervåking</li>
-                                    <li>
-                                        Ingen påslag på tredjepartstjenester -
-                                        du betaler det jeg betaler
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="guarantees">
-                        <h3>Mine garantier</h3>
-                        <div class="guarantee-list">
-                            <div class="guarantee-item">
-                                <h4>Fast prising</h4>
-                                <p>
-                                    Prisen jeg oppgir er prisen du betaler.
-                                    Ingen skjulte kostnader, ingen
-                                    tilleggskostnader for endringer, ingen
-                                    regningsoverraskelser.
-                                </p>
-                            </div>
-                            <div class="guarantee-item">
-                                <h4>1-års garanti</h4>
-                                <p>
-                                    Alle bugs eller funksjonalitetsdefekter
-                                    dekkes i ett helt år etter levering. Jeg
-                                    står bak arbeidet mitt.
-                                </p>
-                            </div>
-                            <div class="guarantee-item">
-                                <h4>Direkte kommunikasjon</h4>
-                                <p>
-                                    Du jobber med meg personlig, ikke gjennom
-                                    kundeansvarlige. Oppdateringer etter din
-                                    tidsplan og i ditt foretrukne format.
-                                </p>
-                            </div>
-                            <div class="guarantee-item">
-                                <h4>Kvalitetsstandarder</h4>
-                                <p>
-                                    Vedlikeholdbar, pålitelig, rask kode bygget
-                                    for å vare med minimale løpende
-                                    vedlikeholdskrav.
-                                </p>
-                            </div>
-                        </div>
+<section class="main-content">
+    <div class="container">
+        <div class="content-wrapper">
+            <div class="process-step">
+                <div class="step-header">
+                    <div class="step-number">1</div>
+                    <div class="step-title">
+                        <h2>{{process_step_1_title}}</h2>
+                        <div class="step-duration">{{process_step_1_duration}}</div>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <section class="cta-section">
-            <div class="container">
-                <div class="cta-content">
-                    <h2>Klar for å starte prosjektet ditt?</h2>
+                <div class="step-content">
                     <p>
-                        La oss bestille din gratis kartleggingssamtale. Ingen
-                        salgssnakk, ingen press—bare en ærlig samtale om
-                        prosjektet ditt og om jeg kan levere det du trenger.
+                        {{process_step_1_description}}
                     </p>
-                    <a
-                        href="mailto:alexander@grothsoftwaresolutions.no"
-                        class="cta-button"
-                        >Bestill kartleggingssamtale</a
-                    >
+
+                    <div class="step-details">
+                        <h3>{{process_step_1_what_title}}</h3>
+                        <ul>
+                            <li>
+                                {{process_step_1_item_1}}
+                            </li>
+                            <li>{{process_step_1_item_2}}</li>
+                            <li>{{process_step_1_item_3}}</li>
+                            <li>
+                                {{process_step_1_item_4}}
+                            </li>
+                            <li>{{process_step_1_item_5}}</li>
+                            <li>{{process_step_1_item_6}}</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </section>
 
-        {{> footer }}
-    </body>
+            <div class="process-step">
+                <div class="step-header">
+                    <div class="step-number">2</div>
+                    <div class="step-title">
+                        <h2>{{process_step_2_title}}</h2>
+                        <div class="step-duration">{{process_step_2_duration}}</div>
+                    </div>
+                </div>
+                <div class="step-content">
+                    <p>
+                        {{process_step_2_description}}
+                    </p>
+
+                    <div class="step-details">
+                        <h3>{{process_step_2_includes_title}}</h3>
+                        <ul>
+                            <li>
+                                {{process_step_2_item_1}}
+                            </li>
+                            <li>
+                                {{process_step_2_item_2}}
+                            </li>
+                            <li>
+                                {{process_step_2_item_3}}
+                            </li>
+                            <li>{{process_step_2_item_4}}</li>
+                            <li>{{process_step_2_item_5}}</li>
+                            <li>{{process_step_2_item_6}}</li>
+                        </ul>
+                    </div>
+
+                    <p>
+                        <strong
+                        >{{process_step_2_final_price}}</strong
+                        >
+                    </p>
+                </div>
+            </div>
+
+            <div class="process-step">
+                <div class="step-header">
+                    <div class="step-number">3</div>
+                    <div class="step-title">
+                        <h2>{{process_step_3_title}}</h2>
+                        <div class="step-duration">{{process_step_3_duration}}</div>
+                    </div>
+                </div>
+                <div class="step-content">
+                    <p>
+                        {{process_step_3_description}}
+                    </p>
+
+                    <div class="step-details">
+                        <h3>{{process_step_3_deliverables_title}}</h3>
+                        <ul>
+                            <li>
+                                {{process_step_3_item_1}}
+                            </li>
+                            <li>{{process_step_3_item_2}}</li>
+                            <li>{{process_step_3_item_3}}</li>
+                            <li>{{process_step_3_item_4}}</li>
+                            <li>
+                                {{process_step_3_item_5}}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="process-step">
+                <div class="step-header">
+                    <div class="step-number">4</div>
+                    <div class="step-title">
+                        <h2>{{process_step_4_title}}</h2>
+                        <div class="step-duration">
+                            {{process_step_4_duration}}
+                        </div>
+                    </div>
+                </div>
+                <div class="step-content">
+                    <p>
+                        {{process_step_4_description}}
+                    </p>
+
+                    <div class="step-details">
+                        <h3>{{process_step_4_options_title}}</h3>
+                        <ul>
+                            <li>
+                                <strong>{{process_step_4_high_involvement}}</strong>
+                            </li>
+                            <li>
+                                <strong>{{process_step_4_minimal_involvement}}</strong>
+                            </li>
+                            <li>
+                                <strong>{{process_step_4_technical_focus}}</strong>
+                            </li>
+                            <li>
+                                <strong>{{process_step_4_business_focus}}</strong>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <p>
+                        {{process_step_4_scope_note}}
+                    </p>
+                </div>
+            </div>
+
+            <div class="process-step">
+                <div class="step-header">
+                    <div class="step-number">5</div>
+                    <div class="step-title">
+                        <h2>{{process_step_5_title}}</h2>
+                        <div class="step-duration">{{process_step_5_duration}}</div>
+                    </div>
+                </div>
+                <div class="step-content">
+                    <p>
+                        {{process_step_5_description}}
+                    </p>
+
+                    <div class="step-details">
+                        <h3>{{process_step_5_package_title}}</h3>
+                        <ul>
+                            <li>{{process_step_5_item_1}}</li>
+                            <li>{{process_step_5_item_2}}</li>
+                            <li>
+                                {{process_step_5_item_3}}
+                            </li>
+                            <li>{{process_step_5_item_4}}</li>
+                            <li>{{process_step_5_item_5}}</li>
+                        </ul>
+                    </div>
+
+                    <p>
+                        <strong>{{process_step_5_warranty}}</strong>
+                    </p>
+                </div>
+            </div>
+
+            <div class="process-step">
+                <div class="step-header">
+                    <div class="step-number">6</div>
+                    <div class="step-title">
+                        <h2>{{process_step_6_title}}</h2>
+                        <div class="step-duration">{{process_step_6_duration}}</div>
+                    </div>
+                </div>
+                <div class="step-content">
+                    <p>
+                        {{process_step_6_description}}
+                    </p>
+
+                    <div class="step-details">
+                        <h3>{{process_step_6_scope_protection_title}}</h3>
+                        <ul>
+                            <li>
+                                <strong>{{process_step_6_change_orders}}</strong>
+                            </li>
+                            <li>
+                                <strong>{{process_step_6_scope_boundaries}}</strong>
+                            </li>
+                            <li>
+                                <strong>{{process_step_6_warranty_limits}}</strong>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="process-step">
+                <div class="step-header">
+                    <div class="step-number">7</div>
+                    <div class="step-title">
+                        <h2>{{process_step_7_title}}</h2>
+                        <div class="step-duration">{{process_step_7_duration}}</div>
+                    </div>
+                </div>
+                <div class="step-content">
+                    <p>
+                        {{process_step_7_description}}
+                    </p>
+
+                    <div class="step-details">
+                        <h3>{{process_step_7_coverage_title}}</h3>
+                        <ul>
+                            <li>{{process_step_7_item_1}}</li>
+                            <li>
+                                {{process_step_7_item_2}}
+                            </li>
+                            <li>{{process_step_7_item_3}}</li>
+                            <li>{{process_step_7_item_4}}</li>
+                            <li>
+                                {{process_step_7_item_5}}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="guarantees">
+                <h3>{{guarantees_title}}</h3>
+                <div class="guarantee-list">
+                    <div class="guarantee-item">
+                        <h4>{{guarantee_fixed_pricing_title}}</h4>
+                        <p>
+                            {{guarantee_fixed_pricing_description}}
+                        </p>
+                    </div>
+                    <div class="guarantee-item">
+                        <h4>{{guarantee_warranty_title}}</h4>
+                        <p>
+                            {{guarantee_warranty_description}}
+                        </p>
+                    </div>
+                    <div class="guarantee-item">
+                        <h4>{{guarantee_direct_communication_title}}</h4>
+                        <p>
+                            {{guarantee_direct_communication_description}}
+                        </p>
+                    </div>
+                    <div class="guarantee-item">
+                        <h4>{{guarantee_quality_title}}</h4>
+                        <p>
+                            {{guarantee_quality_description}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-content">
+            <h2>{{process_cta_title}}</h2>
+            <p>
+                {{process_cta_description}}
+            </p>
+            <a
+                    href="mailto:alexander@grothsoftwaresolutions.no"
+                    class="cta-button"
+            >{{process_cta_button}}</a
+            >
+        </div>
+    </div>
+</section>
+
+{{> footer }}
+</body>
 </html>

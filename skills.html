@@ -1,277 +1,230 @@
 <!doctype html>
-<html lang="no">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Tekniske ferdigheter - Groth Software Solutions</title>
-        <link rel="stylesheet" href="src/styles/globals.css" />
-        <link rel="stylesheet" href="src/styles/skills.css" />
-    </head>
-    <body>
-        {{> header }}
+<html lang="{{locale}}">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{meta_title_skills}}</title>
+    <link rel="stylesheet" href="src/styles/globals.css" />
+    <link rel="stylesheet" href="src/styles/skills.css" />
+</head>
+<body>
+{{> header }}
 
-        <section class="page-header">
-            <div class="container">
-                <div class="page-header-content">
-                    <h1>Tekniske ferdigheter</h1>
-                    <p class="subtitle">
-                        Språk, rammeverk og verktøy jeg jobber med
-                    </p>
-                </div>
+<section class="page-header">
+    <div class="container">
+        <div class="page-header-content">
+            <h1>{{skills_page_title}}</h1>
+            <p class="subtitle">
+                {{skills_page_subtitle}}
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="main-content">
+    <div class="container">
+        <div class="content-wrapper">
+            <div class="skills-intro">
+                <p>
+                    {{skills_intro}}
+                </p>
             </div>
-        </section>
 
-        <section class="main-content">
-            <div class="container">
-                <div class="content-wrapper">
-                    <div class="skills-intro">
+            <div class="skills-category">
+                <div class="category-header">
+                    <h2>{{programming_languages}}</h2>
+                </div>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <h3>{{js_title}}</h3>
                         <p>
-                            Jeg er generalist som tilpasser meg prosjektbehov i
-                            stedet for å være låst til spesifikke
-                            teknologistacker. Dette er språkene, rammeverkene og
-                            verktøyene jeg behersker, men jeg er alltid villig
-                            til å lære nye teknologier hvis de passer ditt
-                            prosjekt.
+                            {{js_description}}
                         </p>
                     </div>
-
-                    <div class="skills-category">
-                        <div class="category-header">
-                            <h2>Programmeringsspråk</h2>
-                        </div>
-                        <div class="skills-grid">
-                            <div class="skill-item">
-                                <h3>JavaScript/TypeScript</h3>
-                                <p>
-                                    Hovedspråk for frontend-webutvikling. Sterk
-                                    med moderne ES6+ funksjoner og TypeScript
-                                    for større prosjekter.
-                                </p>
-                            </div>
-                            <div class="skill-item">
-                                <h3>Python</h3>
-                                <p>
-                                    Goto for dataprosessering, automatisering og
-                                    APIer. Erfaring med helsedata-analyse og
-                                    prediktive systemer.
-                                </p>
-                            </div>
-                            <div class="skill-item">
-                                <h3>C#</h3>
-                                <p>
-                                    Bedriftsapplikasjoner, POS-systemer og
-                                    spillutvikling. Sterk med .NET-rammeverket
-                                    og moderne C#-funksjoner.
-                                </p>
-                            </div>
-                            <div class="skill-item">
-                                <h3>C++</h3>
-                                <p>
-                                    Ytelseskritiske applikasjoner og
-                                    spillutvikling. Erfaring med minnehåndtering
-                                    og optimalisering.
-                                </p>
-                            </div>
-                            <div class="skill-item">
-                                <h3>SQL</h3>
-                                <p>
-                                    Databasedesign, komplekse spørringer og
-                                    optimalisering. Erfaring med PostgreSQL,
-                                    MsSQL og SQLite.
-                                </p>
-                            </div>
-                            <div class="skill-item">
-                                <h3>Go</h3>
-                                <p>
-                                    Mikrotjenester, APIer og backend-systemer
-                                    hvor ytelse og enkelhet er viktig.
-                                </p>
-                            </div>
-                        </div>
+                    <div class="skill-item">
+                        <h3>{{python_title}}</h3>
+                        <p>
+                            {{python_description}}
+                        </p>
                     </div>
-
-                    <div class="skills-category">
-                        <div class="category-header">
-                            <h2>Webutvikling</h2>
-                        </div>
-                        <div class="skills-grid">
-                            <div class="skill-item">
-                                <h3>React/Next.js</h3>
-                                <p>
-                                    Moderne webapplikasjoner med server-side
-                                    rendering, routing og ytelsesoptimalisering.
-                                </p>
-                            </div>
-                            <div class="skill-item">
-                                <h3>Node.js/Express</h3>
-                                <p>
-                                    RESTful APIer, sanntidsapplikasjoner og
-                                    server-side JavaScript-utvikling.
-                                </p>
-                            </div>
-                            <div class="skill-item">
-                                <h3>HTML/CSS</h3>
-                                <p>
-                                    Semantisk markup, responsivt design og
-                                    moderne CSS inkludert Grid og Flexbox. Ingen
-                                    rammeverkavhengigheter når det ikke trengs
-                                    (som denne siden).
-                                </p>
-                            </div>
-                            <div class="skill-item">
-                                <h3>Vue.js</h3>
-                                <p>
-                                    Lette frontend-applikasjoner og progressiv
-                                    forbedring av eksisterende sider.
-                                </p>
-                            </div>
-                        </div>
+                    <div class="skill-item">
+                        <h3>{{csharp_title}}</h3>
+                        <p>
+                            {{csharp_description}}
+                        </p>
                     </div>
-
-                    <div class="skills-category">
-                        <div class="category-header">
-                            <h2>Backend og infrastruktur</h2>
-                        </div>
-                        <div class="skills-grid">
-                            <div class="skill-item">
-                                <h3>PostgreSQL/MsSQL</h3>
-                                <p>
-                                    Databasedesign, spørringsoptimalisering og
-                                    datamodellering for skalerbare
-                                    applikasjoner.
-                                </p>
-                            </div>
-                            <div class="skill-item">
-                                <h3>Redis</h3>
-                                <p>
-                                    Caching, sesjonshåndtering og
-                                    sanntidsfunksjoner.
-                                </p>
-                            </div>
-                            <div class="skill-item">
-                                <h3>Docker</h3>
-                                <p>
-                                    Containerisering for utviklings- og
-                                    deploymentskonsistens.
-                                </p>
-                            </div>
-                            <div class="skill-item">
-                                <h3>AWS/DigitalOcean</h3>
-                                <p>
-                                    Skydeploy, skalering og
-                                    infrastrukturhåndtering. Ingen
-                                    leverandørbinding.
-                                </p>
-                            </div>
-                            <div class="skill-item">
-                                <h3>Git</h3>
-                                <p>
-                                    Versjonskontroll, branching-strategier og
-                                    samarbeidsutviklingsarbeidsflyter.
-                                </p>
-                            </div>
-                            <div class="skill-item">
-                                <h3>Linux</h3>
-                                <p>
-                                    Serveradministrasjon, shell-scripting og
-                                    utviklingsmiljøoppsett.
-                                </p>
-                            </div>
-                        </div>
+                    <div class="skill-item">
+                        <h3>{{cpp_title}}</h3>
+                        <p>
+                            {{cpp_description}}
+                        </p>
                     </div>
-
-                    <div class="skills-category">
-                        <div class="category-header">
-                            <h2>Spesialiserte områder</h2>
-                        </div>
-                        <div class="skills-grid">
-                            <div class="skill-item">
-                                <h3>Spillutvikling</h3>
-                                <p>
-                                    Unity og tilpassede spillmotorer. Erfaring
-                                    med indie-studioarbeidsflyter og
-                                    spillmekanikk.
-                                </p>
-                            </div>
-                            <div class="skill-item">
-                                <h3>API-integrasjon</h3>
-                                <p>
-                                    Tredjepartstjenesteintegrasjon,
-                                    betalingsprosessering og ekstern
-                                    systemtilkobling.
-                                </p>
-                            </div>
-                            <div class="skill-item">
-                                <h3>Dataprosessering</h3>
-                                <p>
-                                    ETL-pipelines, datarensing og analyse for
-                                    business intelligence og rapportering.
-                                </p>
-                            </div>
-                        </div>
+                    <div class="skill-item">
+                        <h3>{{sql_title}}</h3>
+                        <p>
+                            {{sql_description}}
+                        </p>
                     </div>
-
-                    <div class="approach-section">
-                        <h2>Min tekniske tilnærming</h2>
-                        <div class="approach-content">
-                            <div class="approach-item">
-                                <h3>Riktig verktøy for jobben</h3>
-                                <p>
-                                    Jeg velger teknologier basert på
-                                    prosjektkrav, ikke personlige preferanser.
-                                    Noen ganger betyr det vanilla JavaScript i
-                                    stedet for et rammeverk, noen ganger betyr
-                                    det å lære noe nytt.
-                                </p>
-                            </div>
-                            <div class="approach-item">
-                                <h3>Vedlikeholdbar kode</h3>
-                                <p>
-                                    Ren, godt dokumentert kode som andre
-                                    utviklere kan forstå og utvide. Jeg skriver
-                                    kode som om noen andre skal vedlikeholde
-                                    den.
-                                </p>
-                            </div>
-                            <div class="approach-item">
-                                <h3>Ytelsesfokus</h3>
-                                <p>
-                                    Optimaliserte applikasjoner som kjører raskt
-                                    og bruker ressurser effektivt. Ingen
-                                    oppblåste løsninger eller over-engineering.
-                                </p>
-                            </div>
-                            <div class="approach-item">
-                                <h3>Fremtidssikret</h3>
-                                <p>
-                                    Arkitektoniske beslutninger som tillater
-                                    vekst og endringer uten komplette
-                                    omskrivinger. Bygget for å vare.
-                                </p>
-                            </div>
-                        </div>
+                    <div class="skill-item">
+                        <h3>{{go_title}}</h3>
+                        <p>
+                            {{go_description}}
+                        </p>
                     </div>
                 </div>
             </div>
-        </section>
 
-        <section class="cta-section">
-            <div class="container">
-                <div class="cta-content">
-                    <h2>Har du spørsmål om teknisk implementering?</h2>
-                    <p>
-                        La oss diskutere prosjektets tekniske krav og hvordan
-                        disse ferdighetene gjelder dine spesifikke behov.
-                    </p>
-                    <a
-                        href="mailto:alexander@grothsoftwaresolutions.no"
-                        class="cta-button"
-                        >Start teknisk diskusjon</a
-                    >
+            <div class="skills-category">
+                <div class="category-header">
+                    <h2>{{web_development}}</h2>
+                </div>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <h3>{{react_title}}</h3>
+                        <p>
+                            {{react_description}}
+                        </p>
+                    </div>
+                    <div class="skill-item">
+                        <h3>{{node_title}}</h3>
+                        <p>
+                            {{node_description}}
+                        </p>
+                    </div>
+                    <div class="skill-item">
+                        <h3>{{html_title}}</h3>
+                        <p>
+                            {{html_description}}
+                        </p>
+                    </div>
+                    <div class="skill-item">
+                        <h3>{{vue_title}}</h3>
+                        <p>
+                            {{vue_description}}
+                        </p>
+                    </div>
                 </div>
             </div>
-        </section>
 
-        {{> footer }}
-    </body>
+            <div class="skills-category">
+                <div class="category-header">
+                    <h2>{{backend_infrastructure}}</h2>
+                </div>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <h3>{{postgres_title}}</h3>
+                        <p>
+                            {{postgres_description}}
+                        </p>
+                    </div>
+                    <div class="skill-item">
+                        <h3>{{redis_title}}</h3>
+                        <p>
+                            {{redis_description}}
+                        </p>
+                    </div>
+                    <div class="skill-item">
+                        <h3>{{docker_title}}</h3>
+                        <p>
+                            {{docker_description}}
+                        </p>
+                    </div>
+                    <div class="skill-item">
+                        <h3>{{aws_title}}</h3>
+                        <p>
+                            {{aws_description}}
+                        </p>
+                    </div>
+                    <div class="skill-item">
+                        <h3>{{git_title}}</h3>
+                        <p>
+                            {{git_description}}
+                        </p>
+                    </div>
+                    <div class="skill-item">
+                        <h3>{{linux_title}}</h3>
+                        <p>
+                            {{linux_description}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skills-category">
+                <div class="category-header">
+                    <h2>{{specialized_areas}}</h2>
+                </div>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <h3>{{game_dev_title}}</h3>
+                        <p>
+                            {{game_dev_description}}
+                        </p>
+                    </div>
+                    <div class="skill-item">
+                        <h3>{{api_integration_title}}</h3>
+                        <p>
+                            {{api_integration_description}}
+                        </p>
+                    </div>
+                    <div class="skill-item">
+                        <h3>{{data_processing_title}}</h3>
+                        <p>
+                            {{data_processing_description}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="approach-section">
+                <h2>{{technical_approach}}</h2>
+                <div class="approach-content">
+                    <div class="approach-item">
+                        <h3>{{right_tool_title}}</h3>
+                        <p>
+                            {{right_tool_description}}
+                        </p>
+                    </div>
+                    <div class="approach-item">
+                        <h3>{{maintainable_code_title}}</h3>
+                        <p>
+                            {{maintainable_code_description}}
+                        </p>
+                    </div>
+                    <div class="approach-item">
+                        <h3>{{performance_focus_title}}</h3>
+                        <p>
+                            {{performance_focus_description}}
+                        </p>
+                    </div>
+                    <div class="approach-item">
+                        <h3>{{future_proof_title}}</h3>
+                        <p>
+                            {{future_proof_description}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-content">
+            <h2>{{skills_cta_title}}</h2>
+            <p>
+                {{skills_cta_description}}
+            </p>
+            <a
+                    href="mailto:alexander@grothsoftwaresolutions.no"
+                    class="cta-button"
+            >{{skills_cta_button}}</a
+            >
+        </div>
+    </div>
+</section>
+
+{{> footer }}
+</body>
 </html>
