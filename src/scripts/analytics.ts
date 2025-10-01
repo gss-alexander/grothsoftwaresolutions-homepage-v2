@@ -5,6 +5,10 @@ document.addEventListener('DOMContentLoaded', () => {
     trackPageView();
 });
 
+window.addEventListener('pagehide', () => {
+    clearSession();
+});
+
 // Cleans up any analytic tracking and flush event queue
 export function cleanupAnalytics() {
     window.clearInterval(scrollTrackingIntervalId);
@@ -33,10 +37,49 @@ interface TimeOnPageData {
     wasVisible: boolean;
 }
 
-// == UTILITY == //
+// == Session ID == //
 
-function generateSessionId(): string {
-    return crypto.randomUUID();
+const SESSION_ID_KEY: string = "gss_session_id";
+
+interface Session {
+    key: string;
+    expires: number;
+}
+
+function clearSession(): void {
+    localStorage.removeItem(SESSION_ID_KEY);
+}
+
+function generateNewSession(): Session {
+    return {
+        key: crypto.randomUUID(),
+        expires: Date.now() + (15 * 60 * 1000)
+    }
+}
+
+function tryGetStoredSession(): Session | null {
+    const existingSessionIdString = localStorage.getItem(SESSION_ID_KEY);
+    return existingSessionIdString ? JSON.parse(existingSessionIdString) as Session : null;
+}
+
+function getSessionId(): string {
+    const currentTime = Date.now();
+
+    const existingSession = tryGetStoredSession();
+    if (existingSession) {
+        if (currentTime < existingSession.expires) {
+            console.debug('Found existing session that has not yet expired');
+            return existingSession.key;
+        } else {
+            console.debug('Found existing session that has expired.')
+        }
+    }
+
+    console.debug('Generating new session');
+    const newSession = generateNewSession();
+    localStorage.setItem(SESSION_ID_KEY, JSON.stringify(newSession));
+
+    return newSession.key;
 }
 
 // == Event Queue == //
@@ -44,7 +87,7 @@ const eventQueue: AnalyticsEvent[] = [];
 
 function queueEvent<T extends Record<string, any>>(eventType: string, data?: T) {
     const event: AnalyticsEvent = {
-        sessionId: generateSessionId(),
+        sessionId: getSessionId(),
         timestamp: Date.now(),
         eventType,
         page: window.location.pathname,
@@ -53,11 +96,12 @@ function queueEvent<T extends Record<string, any>>(eventType: string, data?: T) 
 
     eventQueue.push(event);
     console.log(`Queued event: ${JSON.stringify(event)}`);
+    postEvent(event);
 }
 
 // == Scroll Tracking == //
 let currentMaxScrollDepth: number = 0;
-const scrollMilestonePercentages: number[] = [25, 50, 75, 100];
+const scrollMilestonePercentages: number[] = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
 const triggeredMilestones: Set<number> = new Set<number>();
 
 // Calculate how far down a page the user has scrolled as a percentage between 0f and 100f
