@@ -21,8 +21,8 @@ async function buildPost(markdownFile, customTitle) {
     const template = await fs.readFile('./templates/blog-template.html', 'utf-8');
 
     const output = template
-        .replace('{{title}}', title)
-        .replace('{{content}}', html);
+        .replaceAll('{{title}}', title)
+        .replaceAll('{{content}}', html);
 
     const filename = markdownFile.split('/').pop().replace('.md', '.html');
     await fs.writeFile(`src/blog/${filename}`, output);
