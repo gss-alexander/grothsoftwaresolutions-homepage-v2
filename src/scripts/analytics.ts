@@ -3,15 +3,18 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollTracking();
     initTimeTracking();
     trackPageView();
+    initConsentButtonEvents();
 });
 
 window.addEventListener('pagehide', () => {
-    clearSession();
+    processEventQueue();
+    cleanupAnalytics();
 });
 
 // Cleans up any analytic tracking and flush event queue
 export function cleanupAnalytics() {
     window.clearInterval(scrollTrackingIntervalId);
+    window.clearInterval(eventProcessingIntervalId);
 }
 
 // == Event Types == //
@@ -37,53 +40,97 @@ interface TimeOnPageData {
     wasVisible: boolean;
 }
 
+// == Utility == //
+function getElementWithThrow(elementId: string): HTMLElement {
+    const element = document.getElementById(elementId);
+    if (!element) {
+        throw new Error(`Could not find element with id \"${elementId}\"`);
+    }
+    return element;
+}
+
+// == Consent == //
+
+const CONSENT_KEY: string = "gss_cookie_consent";
+
+function userHasConsented(): boolean {
+    return localStorage.getItem(CONSENT_KEY) === 'accepted';
+}
+
+function userHasMadeConsentChoice(): boolean {
+    return localStorage.getItem(CONSENT_KEY) !== null;
+}
+
+function setUserConsent(hasConsent: boolean): void {
+    localStorage.setItem(CONSENT_KEY, hasConsent ? 'accepted' : 'declined');
+}
+
+function initConsentButtonEvents(): void {
+    if (userHasMadeConsentChoice()) {
+        if (userHasConsented()) {
+            initEventProcessing();
+        }
+        return;
+    }
+
+    const consentBox = getElementWithThrow('cookie-consent');
+    consentBox.classList.remove('hidden');
+
+    const acceptButton = getElementWithThrow('cookie-accept');
+    acceptButton.addEventListener('click', () => {
+        setUserConsent(true);
+        initEventProcessing();
+        consentBox.classList.add('hidden');
+    });
+
+    const declineButton = getElementWithThrow('cookie-decline');
+    declineButton.addEventListener('click', () => {
+        setUserConsent(false);
+        consentBox.classList.add('hidden');
+    })
+}
+
 // == Session ID == //
 
 const SESSION_ID_KEY: string = "gss_session_id";
 
-interface Session {
-    key: string;
-    expires: number;
-}
-
-function clearSession(): void {
-    localStorage.removeItem(SESSION_ID_KEY);
-}
-
-function generateNewSession(): Session {
-    return {
-        key: crypto.randomUUID(),
-        expires: Date.now() + (15 * 60 * 1000)
-    }
-}
-
-function tryGetStoredSession(): Session | null {
-    const existingSessionIdString = localStorage.getItem(SESSION_ID_KEY);
-    return existingSessionIdString ? JSON.parse(existingSessionIdString) as Session : null;
+function generateNewSession(): string {
+    return crypto.randomUUID();
 }
 
 function getSessionId(): string {
-    const currentTime = Date.now();
-
-    const existingSession = tryGetStoredSession();
+    const existingSession = sessionStorage.getItem(SESSION_ID_KEY);
     if (existingSession) {
-        if (currentTime < existingSession.expires) {
-            console.debug('Found existing session that has not yet expired');
-            return existingSession.key;
-        } else {
-            console.debug('Found existing session that has expired.')
-        }
+        return existingSession;
     }
 
-    console.debug('Generating new session');
     const newSession = generateNewSession();
-    localStorage.setItem(SESSION_ID_KEY, JSON.stringify(newSession));
+    sessionStorage.setItem(SESSION_ID_KEY, newSession);
 
-    return newSession.key;
+    return newSession;
 }
 
 // == Event Queue == //
+const MAX_EVENT_QUEUE_SIZE: number = 10;
 const eventQueue: AnalyticsEvent[] = [];
+
+function postEvent(event: AnalyticsEvent): void {
+    if (!userHasConsented()) {
+        throw new Error("Tried to post analytics event, but user has not consented");
+    }
+
+    fetch('http://localhost:3000/analytics', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(event)
+    }).then(_ => {
+        console.log(`Posted event: ${JSON.stringify(event)}`);
+    }).catch(err => {
+        console.error(err);
+    });
+}
 
 function queueEvent<T extends Record<string, any>>(eventType: string, data?: T) {
     const event: AnalyticsEvent = {
@@ -94,9 +141,33 @@ function queueEvent<T extends Record<string, any>>(eventType: string, data?: T) 
         data
     };
 
+    if (eventQueue.length > MAX_EVENT_QUEUE_SIZE) {
+        eventQueue.shift();
+    }
+
     eventQueue.push(event);
     console.log(`Queued event: ${JSON.stringify(event)}`);
-    postEvent(event);
+}
+
+
+function processEventQueue(): void {
+    for (const event of eventQueue) {
+        postEvent(event);
+    }
+    eventQueue.length = 0;
+}
+
+const EVENT_PROCESSING_INTERVAL_MS: number = 250;
+let eventProcessingIntervalId: number;
+
+function initEventProcessing(): void {
+    if (!userHasConsented()) {
+        throw new Error("Tried to start processing analytics event queue, but user has not consented");
+    }
+
+    eventProcessingIntervalId = window.setInterval(() => {
+        processEventQueue();
+    }, EVENT_PROCESSING_INTERVAL_MS);
 }
 
 // == Scroll Tracking == //
@@ -130,7 +201,6 @@ function trackScrollDepth() {
 const SCROLL_TRACKING_INTERVAL_MS: number = 250;
 let scrollTrackingIntervalId: number;
 function initScrollTracking() {
-
     scrollTrackingIntervalId = window.setInterval(() => {
         trackScrollDepth();
     }, SCROLL_TRACKING_INTERVAL_MS);
