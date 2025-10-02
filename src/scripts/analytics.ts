@@ -121,8 +121,16 @@ function sendEventToServer(event: AnalyticsEvent): void {
     }
 
     try {
-        const blob = new Blob([JSON.stringify(event)], { type: 'application/json' });
-        navigator.sendBeacon(ANALYTICS_URL, blob);
+        fetch(ANALYTICS_URL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(event),
+            keepalive: true
+        }).catch(err => {
+            console.error('Error while sending event to server:', err);
+        });
         console.debug(`Sending analytics event of type ${event.eventType} to server`);
     } catch (err) {
         console.error('Error while sending event to server:', err);
