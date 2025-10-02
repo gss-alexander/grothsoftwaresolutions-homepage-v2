@@ -40,19 +40,26 @@
                         for å forstå hvordan nettstedet brukes. Dette inkluderer:
                     </p>
                     <ul>
-                        <li><strong>Sidevisninger:</strong> Hvilke sider du besøker og hvor du kom fra (referrer)</li>
-                        <li><strong>Scrolledybde:</strong> Hvor langt ned på siden du scroller (i milepæler: 10%, 20%, osv.)</li>
-                        <li><strong>Tid på siden:</strong> Hvor lenge du er på siden og om den var synlig</li>
-                        <li><strong>Økt-ID:</strong> En tilfeldig generert ID for å gruppere handlinger i samme økt</li>
+                        <li><strong>Sidevisninger:</strong> URL til siden du besøker og hvor du kom fra (referrer eller 'direct')</li>
+                        <li><strong>Scrolledybde:</strong> Hvor langt ned på siden du scroller (i milepæler: 10%, 20%, 30%, ...)</li>
+                        <li><strong>Tid på siden:</strong> Total tid siden var synlig i millisekunder og om den var synlig i minst 1 sekund</li>
+                        <li><strong>Økt-ID:</strong> En tilfeldig generert UUID for å gruppere handlinger i samme økt</li>
+                        <li><strong>Tidsstempel:</strong> UTC tidsstempel i millisekunder når hendelsen skjedde</li>
+                        <li><strong>Side-sti:</strong> URL-stien til siden (f.eks. /privacy-policy)</li>
                     </ul>
                     <p>
                         <strong>Viktig:</strong> Ingen av disse dataene er knyttet til deg personlig.
                         Jeg samler ikke inn IP-adresse, nettleserinformasjon, enhetsinformasjon,
-                        eller annen identifiserbar informasjon i analysedata.
+                        skjermoppløsning, operativsystem, eller annen identifiserbar informasjon i analysedata.
                     </p>
                     <p>
                         <strong>Lagringssted:</strong> Økt-ID lagres i nettleserens sessionStorage (slettes når du lukker fanen).
-                        Samtykkevalget ditt lagres i localStorage. Analysedata sendes til min server og lagres i database.
+                        Samtykkevalget ditt lagres i localStorage. Analysedata sendes til min server og lagres i 30 dager.
+                    </p>
+                    <p>
+                        <strong>Når data sendes:</strong> Hvis du har samtykket, sendes data umiddelbart til serveren.
+                        Hvis du ikke har samtykket ennå, lagres hendelser midlertidig i nettleserens minne og sendes kun hvis du senere godtar.
+                        Hendelser slettes hvis du avslår samtykke.
                     </p>
 
                     <h3>IP-adresser for hastighetsbegrensning</h3>
@@ -61,7 +68,7 @@
                         Dette skjer uavhengig av ditt cookiesamtykke og er nødvendig for å beskytte serveren.
                     </p>
                     <p>
-                        <strong>Lagringsvarighet:</strong> Midlertidig i serverens minne, slettes automatisk.
+                        <strong>Lagringsvarighet:</strong> IP-adressen lagres midlertidig i serverens minne og slettes automatisk etter 10 minutter etter siste forespørsel.
                         IP-adressen lagres aldri i database eller sammen med analysedata.
                     </p>
 
@@ -97,20 +104,23 @@
 
                     <h3>localStorage</h3>
                     <p>
-                        <strong>Cookie-navn:</strong> <code>gss_cookie_consent</code><br>
-                        <strong>Formål:</strong> Huske ditt valg om cookiesamtykke (accepted/declined)<br>
+                        <strong>Nøkkel:</strong> <code>gss_cookie_consent</code><br>
+                        <strong>Verdier:</strong> 'accepted' eller 'declined'<br>
+                        <strong>Formål:</strong> Huske ditt valg om cookiesamtykke<br>
                         <strong>Varighet:</strong> Permanent inntil du sletter nettleserdata
                     </p>
 
                     <h3>sessionStorage</h3>
                     <p>
-                        <strong>Session-navn:</strong> <code>gss_session_id</code><br>
-                        <strong>Formål:</strong> Tilfeldig generert ID for å gruppere handlinger i samme økt<br>
+                        <strong>Nøkkel:</strong> <code>gss_session_id</code><br>
+                        <strong>Verdi:</strong> Tilfeldig generert UUID<br>
+                        <strong>Formål:</strong> Gruppere handlinger i samme økt<br>
                         <strong>Varighet:</strong> Slettes når du lukker nettleserfanen
                     </p>
 
                     <p>
-                        Hvis du avslår cookiesamtykke, lagres kun ditt valg i localStorage. Ingen analysedata samles inn eller sendes.
+                        Hvis du avslår cookiesamtykke, lagres kun ditt valg i localStorage. Ingen analysedata samles inn, sendes, eller lagres.
+                        Eventuelle hendelser som ble køet før du tok valget, slettes.
                     </p>
                 </div>
             </div>
@@ -145,9 +155,10 @@
                         <li><strong>Sletting:</strong> Be om at data slettes</li>
                         <li><strong>Portabilitet:</strong> Motta data i strukturert, maskinlesbart format</li>
                         <li><strong>Innsigelse:</strong> Protestere mot behandling av dine data</li>
+                        <li><strong>Trekke tilbake samtykke:</strong> Du kan når som helst endre ditt samtykke ved å slette localStorage i nettleseren</li>
                     </ul>
                     <p>
-                        Siden jeg ikke lagrer personopplysninger permanent, er de fleste av disse rettighetene ikke relevante.
+                        Siden jeg ikke lagrer personopplysninger i analysedata, kan jeg ikke identifisere eller finne dine spesifikke data basert på økt-ID alene.
                         Hvis du har sendt meg en e-post og vil at jeg skal slette den, gi meg beskjed.
                     </p>
                 </div>
@@ -157,8 +168,10 @@
                 <h2>Datasikkerhet</h2>
                 <div class="policy-content">
                     <p>
-                        Nettstedet bruker HTTPS-kryptering for alle tilkoblinger. Siden jeg ikke samler inn eller
-                        lagrer personopplysninger permanent, er det minimalt med sensitiv data å beskytte.
+                        Nettstedet bruker HTTPS-kryptering for alle tilkoblinger.
+                    </p>
+                    <p>
+                        Siden jeg ikke samler inn eller lagrer personopplysninger i analysedata, er det minimalt med sensitiv data å beskytte.
                     </p>
                     <p>
                         E-post kommuniseres via standard e-postsikkerhet. Hvis du deler sensitiv informasjon, vurder å
@@ -194,9 +207,10 @@
                 <p>
                     Dette nettstedet samler inn grunnleggende anonymisert bruksstatistikk (sidevisninger, scrolledybde,
                     tid på side) kun hvis du godtar cookiesamtykke. Økt-ID lagres i sessionStorage, samtykke i
-                    localStorage. Ingen personidentifiserbar informasjon samles inn i analysedata. IP-adresse
-                    brukes midlertidig for hastighetsbegrensning, men lagres aldri. Ingen data selges
-                    eller deles med tredjeparter.
+                    localStorage. Data sendes til serveren og lagres i 30 dager.
+                    Ingen personidentifiserbar informasjon samles inn i analysedata. IP-adresse brukes midlertidig
+                    for hastighetsbegrensning, lagres i minne i maks 10 minutter, og lagres aldri i database.
+                    Ingen data selges eller deles med tredjeparter.
                 </p>
             </div>
         </div>
