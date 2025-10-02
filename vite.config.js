@@ -22,13 +22,20 @@ function getHtmlFiles(dir, baseDir = dir) {
     return entries;
 }
 
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
     root: "src",
     plugins: [
         handlebars({
             partialDirectory: resolve(__dirname, "partials"),
         }),
     ],
+    define: {
+        'import.meta.env.VITE_ANALYTICS_URL': JSON.stringify(
+            mode === 'production'
+                    ? 'https://api.grothsoftwaresolutions.no/analytics'
+                    : 'http://localhost:3000/analytics'
+        )
+    },
     build: {
         outDir: "../dist",
         emptyOutDir: true,
@@ -37,4 +44,4 @@ export default defineConfig({
         },
     },
     publicDir: "../public"
-});
+}));

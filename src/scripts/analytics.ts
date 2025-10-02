@@ -7,14 +7,12 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 window.addEventListener('pagehide', () => {
-    processEventQueue();
     cleanupAnalytics();
 });
 
 // Cleans up any analytic tracking and flush event queue
 export function cleanupAnalytics() {
     window.clearInterval(scrollTrackingIntervalId);
-    window.clearInterval(eventProcessingIntervalId);
 }
 
 // == Event Types == //
@@ -62,14 +60,14 @@ function userHasMadeConsentChoice(): boolean {
 }
 
 function setUserConsent(hasConsent: boolean): void {
-    localStorage.setItem(CONSENT_KEY, hasConsent ? 'accepted' : 'declined');
+    const keyValue = hasConsent ? 'accepted' : 'declined';
+    localStorage.setItem(CONSENT_KEY, keyValue);
+    console.info(`Set user consent to ${keyValue}`)
 }
 
 function initConsentButtonEvents(): void {
     if (userHasMadeConsentChoice()) {
-        if (userHasConsented()) {
-            initEventProcessing();
-        }
+        console.debug(`User has already made consent choice, skipping setting up consent button events. Has consented=${userHasConsented()}`);
         return;
     }
 
@@ -79,7 +77,7 @@ function initConsentButtonEvents(): void {
     const acceptButton = getElementWithThrow('cookie-accept');
     acceptButton.addEventListener('click', () => {
         setUserConsent(true);
-        initEventProcessing();
+        processQueuedEvents();
         consentBox.classList.add('hidden');
     });
 
@@ -106,33 +104,32 @@ function getSessionId(): string {
 
     const newSession = generateNewSession();
     sessionStorage.setItem(SESSION_ID_KEY, newSession);
+    console.debug(`Generated a new session ID with value ${newSession}`);
 
     return newSession;
 }
 
-// == Event Queue == //
-const MAX_EVENT_QUEUE_SIZE: number = 10;
+// == Events == //
+const MAX_EVENT_QUEUE_SIZE: number = 50; // Probably excessive. I just want to limit storage being used on client.
+// @ts-ignore
+const ANALYTICS_URL: string = import.meta.env.VITE_ANALYTICS_URL;
 const eventQueue: AnalyticsEvent[] = [];
 
-function postEvent(event: AnalyticsEvent): void {
+function sendEventToServer(event: AnalyticsEvent): void {
     if (!userHasConsented()) {
         throw new Error("Tried to post analytics event, but user has not consented");
     }
 
-    fetch('http://localhost:3000/analytics', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(event)
-    }).then(_ => {
-        console.log(`Posted event: ${JSON.stringify(event)}`);
-    }).catch(err => {
-        console.error(err);
-    });
+    try {
+        const blob = new Blob([JSON.stringify(event)], { type: 'application/json' });
+        navigator.sendBeacon(ANALYTICS_URL, blob);
+        console.debug(`Sending analytics event of type ${event.eventType} to server`);
+    } catch (err) {
+        console.error('Error while sending event to server:', err);
+    }
 }
 
-function queueEvent<T extends Record<string, any>>(eventType: string, data?: T) {
+function registerEvent<T extends Record<string, any>>(eventType: string, data?: T) {
     const event: AnalyticsEvent = {
         sessionId: getSessionId(),
         timestamp: Date.now(),
@@ -141,34 +138,27 @@ function queueEvent<T extends Record<string, any>>(eventType: string, data?: T) 
         data
     };
 
-    if (eventQueue.length > MAX_EVENT_QUEUE_SIZE) {
-        eventQueue.shift();
-    }
+    console.debug(`Registering event of type ${event.eventType}`);
 
-    eventQueue.push(event);
-    console.log(`Queued event: ${JSON.stringify(event)}`);
+    if (userHasConsented()) {
+        sendEventToServer(event);
+    } else {
+        if (eventQueue.length > MAX_EVENT_QUEUE_SIZE) {
+            eventQueue.shift();
+        }
+
+        eventQueue.push(event);
+    }
 }
 
-
-function processEventQueue(): void {
+function processQueuedEvents(): void {
+    console.debug(`Processing ${eventQueue.length} queued events`);
     for (const event of eventQueue) {
-        postEvent(event);
+        sendEventToServer(event);
     }
     eventQueue.length = 0;
 }
 
-const EVENT_PROCESSING_INTERVAL_MS: number = 250;
-let eventProcessingIntervalId: number;
-
-function initEventProcessing(): void {
-    if (!userHasConsented()) {
-        throw new Error("Tried to start processing analytics event queue, but user has not consented");
-    }
-
-    eventProcessingIntervalId = window.setInterval(() => {
-        processEventQueue();
-    }, EVENT_PROCESSING_INTERVAL_MS);
-}
 
 // == Scroll Tracking == //
 let currentMaxScrollDepth: number = 0;
@@ -192,7 +182,7 @@ function trackScrollDepth() {
         scrollMilestonePercentages.forEach(milestone => {
             if (currentDepth >= milestone && !triggeredMilestones.has(milestone)) {
                 triggeredMilestones.add(milestone);
-                queueEvent<ScrollMilestoneData>('scroll_milestone', { depth: milestone });
+                registerEvent<ScrollMilestoneData>('scroll_milestone', { depth: milestone });
             }
         });
     }
@@ -208,7 +198,7 @@ function initScrollTracking() {
 
 // == PAGE VIEW TRACKING == //
 function trackPageView(): void {
-    queueEvent<PageViewData>('page_view', {
+    registerEvent<PageViewData>('page_view', {
         referrer: document.referrer || 'direct',
         url: window.location.href
     });
@@ -248,7 +238,7 @@ function trackTimeOnPage() {
         totalVisibleTime += now - lastVisibilityChange;
     }
 
-    queueEvent<TimeOnPageData>('time_on_page', {
+    registerEvent<TimeOnPageData>('time_on_page', {
         duration: Math.round(totalVisibleTime),
         wasVisible: totalVisibleTime > 1000 // at least 1 second visible
     });
