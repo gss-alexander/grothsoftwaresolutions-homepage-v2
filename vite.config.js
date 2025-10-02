@@ -36,4 +36,5 @@ export default defineConfig({
             input: getHtmlFiles(resolve(__dirname, "src")),
         },
     },
+    publicDir: "../public"
 });
