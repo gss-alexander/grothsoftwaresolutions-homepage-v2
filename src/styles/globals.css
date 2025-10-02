@@ -215,7 +215,7 @@ footer p {
     text-transform: uppercase;
     letter-spacing: 0.5px;
     color: #1a1a1a;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
 }
 
 .cookie-consent-text {
@@ -223,7 +223,20 @@ footer p {
     font-size: 14px;
     line-height: 1.6;
     color: #4d4d4d;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
+}
+
+.cookie-consent-text a {
+    color: #1a1a1a;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+    transition: color 0.2s;
+}
+
+.cookie-consent-text a:hover {
+    color: #2d2d2d;
+    text-decoration-thickness: 2px;
 }
 
 .cookie-consent-buttons {
@@ -266,7 +279,6 @@ footer p {
     border-color: #472323;
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
     .cookie-consent {
         right: 10px;
