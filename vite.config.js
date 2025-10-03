@@ -33,7 +33,7 @@ export default defineConfig(({ mode }) => ({
         'import.meta.env.VITE_ANALYTICS_URL': JSON.stringify(
             mode === 'production'
                     ? 'https://api.grothsoftwaresolutions.no/analytics'
-                    : 'http://localhost:3000/analytics'
+                    : 'http://localhost:5000/analytics'
         )
     },
     build: {
