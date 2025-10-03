@@ -1,4 +1,7 @@
 // == Initialization == //
+import {setUserConsent, userHasConsented, userHasMadeConsentChoice} from "./consent.ts";
+import {getElementStrict} from "../lib";
+
 document.addEventListener('DOMContentLoaded', () => {
     initScrollTracking();
     initTimeTracking();
@@ -38,50 +41,23 @@ interface TimeOnPageData {
     wasVisible: boolean;
 }
 
-// == Utility == //
-function getElementWithThrow(elementId: string): HTMLElement {
-    const element = document.getElementById(elementId);
-    if (!element) {
-        throw new Error(`Could not find element with id \"${elementId}\"`);
-    }
-    return element;
-}
-
 // == Consent == //
 
-const CONSENT_KEY: string = "gss_cookie_consent";
-
-function userHasConsented(): boolean {
-    return localStorage.getItem(CONSENT_KEY) === 'accepted';
-}
-
-function userHasMadeConsentChoice(): boolean {
-    return localStorage.getItem(CONSENT_KEY) !== null;
-}
-
-function setUserConsent(hasConsent: boolean): void {
-    const keyValue = hasConsent ? 'accepted' : 'declined';
-    localStorage.setItem(CONSENT_KEY, keyValue);
-    console.info(`Set user consent to ${keyValue}`)
-}
-
 function initConsentButtonEvents(): void {
-    if (userHasMadeConsentChoice()) {
-        console.debug(`User has already made consent choice, skipping setting up consent button events. Has consented=${userHasConsented()}`);
-        return;
+    const consentBox = getElementStrict('cookie-consent');
+
+    if (!userHasMadeConsentChoice()) {
+        consentBox.classList.remove('hidden');
     }
 
-    const consentBox = getElementWithThrow('cookie-consent');
-    consentBox.classList.remove('hidden');
-
-    const acceptButton = getElementWithThrow('cookie-accept');
+    const acceptButton = getElementStrict('cookie-accept');
     acceptButton.addEventListener('click', () => {
         setUserConsent(true);
         processQueuedEvents();
         consentBox.classList.add('hidden');
     });
 
-    const declineButton = getElementWithThrow('cookie-decline');
+    const declineButton = getElementStrict('cookie-decline');
     declineButton.addEventListener('click', () => {
         setUserConsent(false);
         consentBox.classList.add('hidden');

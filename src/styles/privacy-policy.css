@@ -183,6 +183,19 @@
     margin: 0;
 }
 
+#cookie-consent-withdraw {
+    cursor: pointer;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+    transition: color 0.2s;
+}
+
+#cookie-consent-withdraw:hover {
+    color: #2d2d2d;
+    text-decoration-thickness: 2px;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .page-header {

@@ -10,6 +10,7 @@
 <body>
 {{> header }}
 {{> cookie-consent }}
+<script type="module" src="/scripts/privacy-notice.ts"></script>
 
 <section class="page-header">
     <div class="container">
@@ -155,10 +156,11 @@
                         <li><strong>Sletting:</strong> Be om at data slettes</li>
                         <li><strong>Portabilitet:</strong> Motta data i strukturert, maskinlesbart format</li>
                         <li><strong>Innsigelse:</strong> Protestere mot behandling av dine data</li>
-                        <li><strong>Trekke tilbake samtykke:</strong> Du kan når som helst endre ditt samtykke ved å slette localStorage i nettleseren</li>
+                        <li><strong>Trekke tilbake samtykke:</strong> Du kan fjerne samtykke ved å <span id="cookie-consent-withdraw">trykke her</span></li>
                     </ul>
                     <p>
                         Siden jeg ikke lagrer personopplysninger i analysedata, kan jeg ikke identifisere eller finne dine spesifikke data basert på økt-ID alene.
+                        Derfor kan jeg ikke gi tilgang til, rette, gi innsikt til, eller slette data ved forespørsel.
                         Hvis du har sendt meg en e-post og vil at jeg skal slette den, gi meg beskjed.
                     </p>
                 </div>
