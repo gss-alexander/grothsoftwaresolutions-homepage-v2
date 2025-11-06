@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kontakt - Groth Software Solutions</title>
+    <link rel="stylesheet" href="styles/globals.css" />
+    <link rel="stylesheet" href="styles/contact.css" />
+    <meta
+            name="description"
+            content="Ta kontakt for et uforpliktende møte om ditt programvareprosjekt. Fast pris, transparente prosesser og 1 års garanti."
+    />
+</head>
+<body>
+{{> header }}
+{{> cookie-consent }}
+
+<section class="page-header">
+    <div class="container">
+        <div class="page-header-content">
+            <h1>Ta kontakt</h1>
+            <p class="subtitle">
+                La oss diskutere prosjektet ditt
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="main-content">
+    <div class="container">
+        <div class="content-wrapper">
+            <div class="intro-section">
+                <p>
+                    Fyll ut skjemaet under så tar jeg kontakt innen 24 timer.
+                </p>
+            </div>
+
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="name">Navn</label>
+                    <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            required
+                            placeholder="Ditt fulle navn"
+                    />
+                </div>
+
+                <div class="form-group">
+                    <label for="company">
+                        Bedriftsnavn
+                        <span class="optional-label">(valgfritt)</span>
+                    </label>
+                    <input
+                            type="text"
+                            id="company"
+                            name="company"
+                            placeholder="Bedriftens navn"
+                    />
+                </div>
+
+                <div class="form-group">
+                    <label for="email">E-postadresse</label>
+                    <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            required
+                            placeholder="din@epost.no"
+                    />
+                </div>
+
+                <div class="form-group">
+                    <label for="topic">Hva gjelder henvendelsen?</label>
+                    <select id="topic" name="topic" required>
+                        <option value="" disabled selected hidden>Velg et emne</option>
+                        <option value="new-project">Nytt prosjekt</option>
+                        <option value="existing-project">Eksisterende prosjekt</option>
+                        <option value="consultation">Konsultasjon</option>
+                        <option value="maintenance">Vedlikehold og support</option>
+                        <option value="other">Annet</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Beskrivelse</label>
+                    <textarea
+                            id="message"
+                            name="message"
+                            rows="6"
+                            required
+                            placeholder="Fortell kort om hva du trenger hjelp med"
+                    ></textarea>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="submit-button" id="submit-button">
+                        Send henvendelse
+                    </button>
+                </div>
+            </form>
+
+            <div class="form-feedback hidden" id="form-feedback">
+                <div class="feedback-content">
+                    <div class="feedback-message" id="feedback-message"></div>
+                </div>
+            </div>
+
+            <div class="alternative-contact">
+                <p class="alternative-label">Foretrekker du direkte kontakt?</p>
+                <a href="mailto:alexander@grothsoftwaresolutions.no" class="email-link">
+                    alexander@grothsoftwaresolutions.no
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+{{> footer }}
+<script type="module" src="/scripts/contact/page.ts"></script>
+</body>
+</html>

@@ -34,7 +34,12 @@ export default defineConfig(({ mode }) => ({
             mode === 'production'
                     ? 'https://api.grothsoftwaresolutions.no/analytics'
                     : 'http://localhost:5000/analytics'
-        )
+        ),
+        'import.meta.env.VITE_CONTACT_URL': JSON.stringify(
+            mode === 'production'
+                ? 'https://api.grothsoftwaresolutions.no/contact'
+                : 'http://localhost:5000/contact'
+        ),
     },
     build: {
         outDir: "../dist",
